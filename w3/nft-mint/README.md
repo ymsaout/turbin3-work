@@ -24,11 +24,11 @@ Create, mint, and trade NFTs on Solana devnet using Metaplex UMI and Irys for st
 | Mint Address | `8cgf55BtX1EKjeXb1nmqtdLokSete2NYnyWLF1hFLYji` |
 | NFT Trade TX | `4Bieh1UetEKHQB5ARniyNx3iqnG74RjZX6MX9xWwddFL7aNDRRsmqjV2k3NPgBxK2hwPWAkGMcoAvoRjJRzjWbgb` |
 
-### Explorer Links
+### Explorer Links (Solscan)
 
-- Mint TX: https://explorer.solana.com/tx/4mCqjPFErZ2mQy4ANLxC1aGDNPCmzhULUBaSq927iXdyGkidaSDgigi1BgwqWqc4biEpK7Xg7s4XLVWXEYo4dqeU?cluster=devnet
-- Mint Address: https://explorer.solana.com/address/8cgf55BtX1EKjeXb1nmqtdLokSete2NYnyWLF1hFLYji?cluster=devnet
-- Trade TX: https://explorer.solana.com/tx/4Bieh1UetEKHQB5ARniyNx3iqnG74RjZX6MX9xWwddFL7aNDRRsmqjV2k3NPgBxK2hwPWAkGMcoAvoRjJRzjWbgb?cluster=devnet
+- Mint TX: https://solscan.io/tx/4mCqjPFErZ2mQy4ANLxC1aGDNPCmzhULUBaSq927iXdyGkidaSDgigi1BgwqWqc4biEpK7Xg7s4XLVWXEYo4dqeU?cluster=devnet
+- Mint Address: https://solscan.io/token/8cgf55BtX1EKjeXb1nmqtdLokSete2NYnyWLF1hFLYji?cluster=devnet
+- Trade TX: https://solscan.io/tx/4Bieh1UetEKHQB5ARniyNx3iqnG74RjZX6MX9xWwddFL7aNDRRsmqjV2k3NPgBxK2hwPWAkGMcoAvoRjJRzjWbgb?cluster=devnet
 
 ## How to Run
 
@@ -196,8 +196,8 @@ yarn nft_mint
 
 ### 8. Verify
 
-- Open the Explorer link displayed to view your transaction
-- Search your Mint Address on https://explorer.solana.com/?cluster=devnet to see your NFT
+- Open the Solscan link to view your transaction: `https://solscan.io/tx/<TX_HASH>?cluster=devnet`
+- Search your Mint Address on https://solscan.io/?cluster=devnet to see your NFT
 
 ### Flow Summary
 
