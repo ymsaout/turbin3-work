@@ -12,8 +12,8 @@ pub struct Swap<'info> {
     #[account(mut)]
     pub user: Signer<'info>,
 
-    pub mint_x: Account<'info, Mint>,
-    pub mint_y: Account<'info, Mint>,
+    pub mint_x: Box<Account<'info, Mint>>,
+    pub mint_y: Box<Account<'info, Mint>>,
 
     #[account(
         has_one = mint_x,
@@ -35,7 +35,7 @@ pub struct Swap<'info> {
         mint::decimals = 6,
         mint::authority = config,
     )]
-    pub mint_lp: Account<'info, Mint>,
+    pub mint_lp: Box<Account<'info, Mint>>,
 
     #[account(
         mut,
@@ -43,7 +43,7 @@ pub struct Swap<'info> {
         associated_token::authority = config,
         associated_token::token_program = token_program,
     )]
-    pub vault_x: Account<'info, TokenAccount>,
+    pub vault_x: Box<Account<'info, TokenAccount>>,
 
     #[account(
         mut,
@@ -51,7 +51,7 @@ pub struct Swap<'info> {
         associated_token::authority = config,
         associated_token::token_program = token_program,
     )]
-    pub vault_y: Account<'info, TokenAccount>,
+    pub vault_y: Box<Account<'info, TokenAccount>>,
 
     #[account(
         init_if_needed,
@@ -60,7 +60,7 @@ pub struct Swap<'info> {
         associated_token::authority = user,
         associated_token::token_program = token_program,
     )]
-    pub user_x: Account<'info, TokenAccount>,
+    pub user_x: Box<Account<'info, TokenAccount>>,
 
     #[account(
         init_if_needed,
@@ -69,7 +69,7 @@ pub struct Swap<'info> {
         associated_token::authority = user,
         associated_token::token_program = token_program,
     )]
-    pub user_y: Account<'info, TokenAccount>,
+    pub user_y: Box<Account<'info, TokenAccount>>,
 
     pub token_program: Program<'info, Token>,
     pub system_program: Program<'info, System>,
@@ -108,8 +108,6 @@ impl<'info> Swap<'info> {
     }
 
     fn deposit_to_vault(&mut self, is_x: bool, amount: u64) -> Result<()> {
-        let cpi_program = self.token_program.to_account_info();
-
         let (cpi_accounts, decimals) = if is_x {
             (
                 TransferChecked {
@@ -132,13 +130,11 @@ impl<'info> Swap<'info> {
             )
         };
 
-        let cpi_ctx = CpiContext::new(cpi_program, cpi_accounts);
+        let cpi_ctx = CpiContext::new(self.token_program.key(), cpi_accounts);
         transfer_checked(cpi_ctx, amount, decimals)
     }
 
     fn withdraw_from_vault(&mut self, is_x: bool, amount: u64) -> Result<()> {
-        let cpi_program = self.token_program.to_account_info();
-
         // Opposite direction of the deposit: depositing X means withdrawing Y
         let (cpi_accounts, decimals) = if is_x {
             (
@@ -174,7 +170,7 @@ impl<'info> Swap<'info> {
         ];
         let signer_seeds = &[&seeds[..]];
 
-        let cpi_ctx = CpiContext::new_with_signer(cpi_program, cpi_accounts, signer_seeds);
+        let cpi_ctx = CpiContext::new_with_signer(self.token_program.key(), cpi_accounts, signer_seeds);
         transfer_checked(cpi_ctx, amount, decimals)
     }
 }

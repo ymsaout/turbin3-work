@@ -7,7 +7,7 @@ pub mod state;
 use instructions::*;
 
 // Replace with the real key after: anchor build && anchor keys sync
-declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
+declare_id!("DkiEAGnAj1PVmDhRUtE7WnRScyGCDW4AwtFtLTqvBDFb");
 
 #[program]
 pub mod amm {
