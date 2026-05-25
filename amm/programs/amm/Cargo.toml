@@ -1,0 +1,35 @@
+[package]
+name = "amm"
+version = "0.1.0"
+description = "AMM (Automated Market Maker) avec Anchor et constant-product-curve"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "amm"
+
+[features]
+default = []
+cpi = ["no-entrypoint"]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+idl-build = ["anchor-lang/idl-build", "anchor-spl/idl-build"]
+anchor-debug = []
+custom-heap = []
+custom-panic = []
+
+[dependencies]
+anchor-lang = { version = "0.32.1", features = ["init-if-needed"] }
+anchor-spl = { version = "0.32.1", features = ["token", "associated_token"] }
+constant-product-curve = { git = "https://github.com/deanmlittle/constant-product-curve.git" }
+
+[dev-dependencies]
+litesvm = "0.4"
+solana-sdk = "2.0"
+spl-token = { version = "6", features = ["no-entrypoint"] }
+spl-associated-token-account = { version = "4", features = ["no-entrypoint"] }
+sha2 = "0.10"
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(target_os, values("solana"))'] }
