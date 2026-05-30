@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E '\\\\.\\(rs|toml|ts|json\\)$')",
+      "Bash(xargs cat)",
+      "Bash(cargo check *)",
+      "Bash(solana-keygen new *)",
+      "Bash(anchor keys *)",
+      "Bash(anchor build *)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(i['name'], [\\(a['name']\\) for a in i['accounts']]\\) for i in d['instructions']]\")",
+      "Bash(yarn install *)",
+      "Bash(solana config *)",
+      "Bash(solana cluster-version *)",
+      "Bash(surfpool --version)"
+    ]
+  }
+}
