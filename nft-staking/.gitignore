@@ -1,0 +1,8 @@
+.anchor/
+.surfpool/
+target/
+node_modules/
+dist/
+
+# Logs
+*.log
