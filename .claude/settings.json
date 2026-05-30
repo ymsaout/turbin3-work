@@ -11,7 +11,20 @@
       "Bash(yarn install *)",
       "Bash(solana config *)",
       "Bash(solana cluster-version *)",
-      "Bash(surfpool --version)"
+      "Bash(surfpool --version)",
+      "Bash(cargo search *)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(d['address']\\)\")",
+      "Bash(solana-keygen pubkey *)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(i['name'], [a['name'] for a in i['accounts']]\\) for i in d['instructions']]\")",
+      "Bash(python3 -c ' *)",
+      "Bash(git -C /Users/ym/git/turbin3-work status --short)",
+      "Bash(awk '{print $2}')",
+      "Bash(git -C /Users/ym/git/turbin3-work rm -r --cached nft-staking/node_modules nft-staking/target nft-marlektplace/node_modules nft-marlektplace/target)",
+      "Bash(git -C /Users/ym/git/turbin3-work log --oneline -5)",
+      "Bash(awk '{print $1}')",
+      "Bash(git -C /Users/ym/git/turbin3-work ls-files)",
+      "Bash(grep -E \"node_modules|target/|\\\\.log$|\\\\.env$|\\\\.json$\")",
+      "Bash(git -C /Users/ym/git/turbin3-work rm --cached \"vault/.surfpool/logs/simnet_2026-02-06--12-37-18.log\")"
     ]
   }
 }
